@@ -446,13 +446,12 @@ The renderer is configured from NYXT_RENDERER or `*nyxt-renderer*'."))
                (:file "tests/renderer-offline/search-buffer")
                (:file "tests/renderer-online/set-url")))
 
-(defsystem "nyxt/qt"
-  :depends-on (cl-webengine
-               nyxt
-               trivial-main-thread)
+(defsystem "nyxt/electron"
+  :depends-on (cl-electron
+               nyxt)
   :pathname #p"NYXT:source;"
   :around-compile "NASDF:FAIL-ON-WARNINGS"
-  :components ((:file "renderer/qt")))
+  :components ((:file "renderer/electron")))
 
 ;; We should not set the build-pathname in systems that have a component.
 ;; Indeed, when an external program (like Guix) builds components, it needs to
@@ -479,12 +478,12 @@ The renderer is configured from NYXT_RENDERER or `*nyxt-renderer*'."))
   :build-pathname "nyxt"
   :entry-point "nyxt:entry-point")
 
-(defsystem "nyxt/qt-application"
+(defsystem "nyxt/electron-application"
   :defsystem-depends-on ("nasdf")
   :class :nasdf-system
-  :depends-on (nyxt/qt)
+  :depends-on (nyxt/electron)
   :build-operation "program-op"
-  :build-pathname "nyxt-qt"
+  :build-pathname "nyxt-electron"
   :entry-point "nyxt:entry-point")
 
 (defsystem "nyxt/application/tests"
