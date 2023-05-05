@@ -17,6 +17,12 @@
 (define-class electron-browser ()
   ())
 
+(define-class electron-buffer ()
+  ())
+
+(define-class electron-window ()
+  ())
+
 (defmethod install ((renderer electron-renderer))
   (flet ((set-superclasses (renderer-class-sym+superclasses)
            (closer-mop:ensure-finalized
@@ -100,7 +106,7 @@
 (defmethod ffi-inspector-show ((buffer electron-buffer)))
 (defmethod ffi-print-status ((window electron-window) text))
 (defmethod ffi-print-message ((window electron-window) text))
-(defmethod webkit-history ((buffer electron-buffer)))
+(defmethod renderer-history ((buffer electron-buffer)))
 (defmethod ffi-focused-p ((buffer electron-buffer)))
 (defmethod ffi-muted-p ((buffer electron-buffer)))
 (defmethod ffi-tracking-prevention ((buffer electron-buffer)))
