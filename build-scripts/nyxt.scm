@@ -53,6 +53,7 @@
   #:use-module (gnu packages commencement)
   #:use-module (gnu packages glib)
   #:use-module (gnu packages lisp)
+  #:use-module (nongnu packages lisp)
   #:use-module (gnu packages lisp-check)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages gnome)
@@ -147,6 +148,7 @@
           cl-dexador
           cl-dissect
           cl-trivial-custom-debugger
+          cl-electron
           cl-enchant
           cl-flexi-streams
           cl-fset
