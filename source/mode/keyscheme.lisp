@@ -39,7 +39,11 @@ Example of defining a keyscheme mode:
                 (sera:filter #'keyscheme-mode-p (modes (buffer mode))))))
 
 (defmethod enable ((mode keyscheme-mode) &key)
-  (setf (keyscheme (buffer mode)) (keyscheme mode)))
+  (let ((keyscheme (keyscheme mode)))
+    (setf keymaps:*print-shortcut* (keymaps:name keyscheme))
+    (setf (keyscheme (buffer mode)) keyscheme)))
 
 (defmethod disable ((mode keyscheme-mode) &key)
-  (setf (keyscheme (buffer mode)) (previous-keyscheme mode)))
+  (let ((keyscheme (previous-keyscheme mode)))
+    (setf keymaps:*print-shortcut* (keymaps:name keyscheme))
+    (setf (keyscheme (buffer mode)) keyscheme)))
