@@ -15,6 +15,9 @@ If the `:setter-p' option is non-nil, then a dummy setf generic is defined too."
        (prog1
            (define-generic ,name (,@arguments)
              ,documentation
+             (declare (ignorable ,@(set-difference
+                                    (mapcar (compose #'first #'uiop:ensure-list) arguments)
+                                    lambda-list-keywords)))
              nil
              ,@normalized-options)
          ,(when setter?
