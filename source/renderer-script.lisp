@@ -43,6 +43,10 @@ Examples:
 SCRIPT-BODY must be a valid parenscript and will be wrapped in (PS:PS ...).
 Any Lisp expression must be wrapped in (PS:LISP ...).
 
+If the first form in SCRIPT-BODY is a string, then it'll be used as
+documentation string for SCRIPT-NAME. It also is propagated as the first element
+in SCRIPT-BODY on the JavaScript side.
+
 The returned function sends the compiled Javascript to the current buffer webview.
 The function can be passed Lisp ARGS."
   (let ((doc (when (and (> (length script-body) 1)
