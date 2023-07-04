@@ -21,7 +21,11 @@ If the `:setter-p' option is non-nil, then a dummy setf generic is defined too."
              nil
              ,@normalized-options)
          ,(when setter?
-            `(define-generic (setf ,name) (value ,@arguments)))))))
+            `(define-generic (setf ,name) (value ,@arguments)
+               (declare (ignorable value ,@(set-difference
+                                            (mapcar (compose #'first #'uiop:ensure-list) arguments)
+                                            lambda-list-keywords)))
+               nil))))))
 
 (define-ffi-generic ffi-window-delete (window)
   "Delete WINDOW, possibly freeing the associated widgets.
