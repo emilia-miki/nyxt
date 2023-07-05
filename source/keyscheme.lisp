@@ -54,3 +54,9 @@ existing keyscheme `cua'."
 (defvar vi-normal (make-keyscheme "vi-normal" default))
 (export-always 'vi-insert)
 (defvar vi-insert (make-keyscheme "vi-insert"))
+
+;; By default, nkeymaps sets it to t, which represents modifiers à la Emacs.  In
+;; Nyxt, the default keyscheme is cua though.
+;; TODO In a future nkeymaps release, the default value of this global could be
+;; changed.  See https://github.com/atlas-engineer/nkeymaps/issues/12.
+(setf nkeymaps:*print-shortcut* "cua")
