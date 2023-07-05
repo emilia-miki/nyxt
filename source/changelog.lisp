@@ -771,7 +771,9 @@ color-picker support as an example application for this feature.")
 (define-version "3.X.Y"
   (:ul
    (:li "Theme is now properly configurable via "
-        (:a :href (nyxt-url 'common-settings) "Common Settings Menu") ".")))
+        (:a :href (nyxt-url 'common-settings) "Common Settings Menu") ".")
+   (:li "When using the CUA keyscheme, keybindings are shown in a user-friendly
+   way, e.g. " (:code "Ctrl-a") " instead of " (:code "C-a") ".")))
 
 (define-version "4-pre-release-1"
   (:li "When on pre-release, push " (:code "X-pre-release")
